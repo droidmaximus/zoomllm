@@ -1,12 +1,10 @@
 import streamlit as st
 import openai
-__import__('pysqlite3-binary')
+__import__('pysqlite3')
 import sys
-sys.modules['sqlite3'] = sys.modules.pop('pysqlite3-binary')
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 import chromadb
 import os
-os.environ["PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION"] = "python"
-
 # -------------------------------------
 # CONFIGURATION
 # -------------------------------------

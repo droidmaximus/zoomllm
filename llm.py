@@ -5,7 +5,7 @@ import sys
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3-binary')
 import chromadb
 import os
-from chromadb.config import Settings
+os.environ["PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION"] = "python"
 
 # -------------------------------------
 # CONFIGURATION

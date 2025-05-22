@@ -11,11 +11,10 @@ from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.chat_models import ChatOpenAI
 from langchain.schema import AIMessage, HumanMessage
 from langchain.vectorstores import Chroma
-import sys
-__import__('pysqlite3')
-sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
 
 os.environ["CHROMA_TELEMETRY_ENABLED"] = "false"
+os.environ["CHROMA_DB_IMPL"] = "duckdb"
 
 DEFAULT_DB_PATH = "./chroma_db"
 DEFAULT_MODEL = "gpt-4o"

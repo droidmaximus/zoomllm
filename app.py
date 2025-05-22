@@ -11,10 +11,9 @@ sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 import chromadb
 import streamlit as st
 from langchain.chains import ConversationalRetrievalChain
-from langchain.embeddings.openai import OpenAIEmbeddings
-from langchain.chat_models import ChatOpenAI
+from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain.schema import AIMessage, HumanMessage
-from langchain.vectorstores import Chroma
+from langchain_community.vectorstores import Chroma
 
 DEFAULT_DB_PATH = "./chroma_db"
 DEFAULT_MODEL = "gpt-4o"

@@ -2,6 +2,7 @@ streamlit
 openai
 sqlite3-binary
 chromadb
+langchain-community
 langchain
 tiktoken
 protobuf==3.20.3

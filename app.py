@@ -52,7 +52,11 @@ def build_chain(_vs: Chroma,
     retriever = _vs.as_retriever(
         search_kwargs={"k": retrieval_k}
     )
-    return ConversationalRetrievalChain.from_llm(llm, retriever)
+    return ConversationalRetrievalChain.from_llm(
+        llm,
+        retriever,
+       return_source_documents=True
+    )
 
 try:
     vector_store = load_vector_store(chroma_path)

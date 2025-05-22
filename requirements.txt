@@ -3,7 +3,7 @@ streamlit==1.33.0
 chromadb
 langchain==0.1.17
 langchain-community==0.0.36
-langchain-openai==0.0.11               
+langchain-openai              
 openai==1.23.2
 tiktoken==0.6.0
 protobuf==3.20.3

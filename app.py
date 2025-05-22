@@ -50,7 +50,7 @@ def build_chain(_vs: Chroma,
     """
     llm = ChatOpenAI(model_name=model_name, temperature=model_temp)
     retriever = _vs.as_retriever(
-        search_kwargs={"k": retrieval_k, "search_type": "mmr"}
+        search_kwargs={"k": retrieval_k}
     )
     return ConversationalRetrievalChain.from_llm(llm, retriever)
 

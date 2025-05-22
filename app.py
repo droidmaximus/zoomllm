@@ -109,7 +109,7 @@ if user_query:
             for i, doc in enumerate(source_docs, 1):
                 header = f"**Chunk {i}** – {doc.metadata.get('source', 'unknown')}"
                 wrapped = textwrap.fill(doc.page_content, 100)
-                context_blocks.append(f"{header}\n{wrapped}")
+                context_blocks.append(f"\n{wrapped}")
 
             st.markdown(answer)
             with st.expander("Retrieved context"):

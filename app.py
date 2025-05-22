@@ -13,6 +13,8 @@ from langchain.schema import AIMessage, HumanMessage
 from langchain.vectorstores import Chroma
 
 
+os.environ["CHROMA_TELEMETRY_ENABLED"] = "false"
+
 DEFAULT_DB_PATH = "./chroma_db"
 DEFAULT_MODEL = "gpt-4o"
 DEFAULT_K = 5

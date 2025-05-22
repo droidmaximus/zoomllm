@@ -40,15 +40,19 @@ def load_vector_store(path: str) -> Chroma:
         embedding_function=OpenAIEmbeddings(),
     )
 
-@st.cache_resource(show_spinner="Building RAG chain…")
-def build_chain(vs: Chroma, model: str, k: int, temperature: float) -> ConversationalRetrievalChain:
-    llm = ChatOpenAI(model_name=model, temperature=temperature, streaming=False)
-    retriever = vs.as_retriever(search_kwargs={"k": k, "search_type": "mmr"})  # MMR = better diversity
-    return ConversationalRetrievalChain.from_llm(
-        llm,
-        retriever,
-        return_source_documents=True,
+@st.cache_resource
+def build_chain(_vs: Chroma,                 
+                model_name: str,
+                retrieval_k: int = 4,
+                model_temp: float = 0.2):
+    """Return a ConversationalRetrievalChain.
+    Leading “_” tells Streamlit not to hash the Chroma object.
+    """
+    llm = ChatOpenAI(model_name=model_name, temperature=model_temp)
+    retriever = _vs.as_retriever(
+        search_kwargs={"k": retrieval_k, "search_type": "mmr"}
     )
+    return ConversationalRetrievalChain.from_llm(llm, retriever)
 
 try:
     vector_store = load_vector_store(chroma_path)

@@ -15,6 +15,7 @@ from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain.schema import AIMessage, HumanMessage
 from langchain_community.vectorstores import Chroma
 
+OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
 DEFAULT_DB_PATH = "./chroma_db"
 DEFAULT_MODEL = "gpt-4o"
 DEFAULT_K = 5
@@ -32,7 +33,7 @@ def load_vector_store(path: str) -> Chroma:
             f"Chroma directory '{path}' not found – run your ingestion script first.")
 
     client = chromadb.PersistentClient(path=path)
-    collection = client.get_default_collection()  #for now i only have one collection
+    collection = client.get_or_create_collection(name="srt-subtitles")  #for now i only have one collection
     return Chroma(
         client=client,
         collection_name=collection.name,

@@ -11,9 +11,9 @@ from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.chat_models import ChatOpenAI
 from langchain.schema import AIMessage, HumanMessage
 from langchain.vectorstores import Chroma
-import importlib, sys
-import pysqlite3
-sys.modules["sqlite3"] = importlib.import_module("pysqlite3")
+import sys
+__import__('pysqlite3')
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 os.environ["CHROMA_TELEMETRY_ENABLED"] = "false"
 

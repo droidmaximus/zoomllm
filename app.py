@@ -12,7 +12,7 @@ import chromadb
 import streamlit as st
 from langchain.chains import ConversationalRetrievalChain
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
-from langchain.schema import AIMessage, HumanMessage
+from langchain_core.messages import AIMessage, HumanMessage
 from langchain_community.vectorstores import Chroma
 
 OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
